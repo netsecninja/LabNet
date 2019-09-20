@@ -12,7 +12,7 @@ if [ "$USERNAME" != "root" ]; then
 fi
 
 # Check option and run, or print help
-if [ "$1" = "default" ]; then
+if [ "$1" = "ipforward" ]; then
     echo 1 > /proc/sys/net/ipv4/ip_forward
     iptables-restore < /etc/iptables/ipforward
 elif [ "$1" = "polar" ]; then
@@ -21,13 +21,13 @@ elif [ "$1" = "polar" ]; then
     cd PolarProxy
     ./PolarProxy -v -p 10443,80,443 -x /usr/local/share/polarproxy.cer --certhttp 10080 -w polarproxy.pcap
     cd ..
-    iptables-restore < /etc/iptables/default
+    iptables-restore < /etc/iptables/ipforward
 elif [ "$1" = "inetsim" ]; then
     echo 0 > /proc/sys/net/ipv4/ip_forward
     iptables-restore < /etc/iptables/empty
     inetsim
     echo 1 > /proc/sys/net/ipv4/ip_forward
-    iptables-restore < /etc/iptables/default
+    iptables-restore < /etc/iptables/ipforward
 elif [ "$1" = "clear" ]; then
     echo 0 > /proc/sys/net/ipv4/ip_forward
     iptables-restore < /etc/iptables/empty
@@ -38,13 +38,13 @@ else
     echo "Usage: labnet.sh [command]"
     echo
     echo "Commands:"
-    echo "default - Reverts to forwarded internet access"
+    echo "ipforward - Reverts to forwarded internet access"
     echo "polar - Starts Polar Proxy session (internet with SSL/TLS capture)"     
     echo "inetsim - Starts InetSim (no internet access)"
     echo "clear - Clears all iptable rules and disables ip forwarding"
     echo
-    echo "Use Ctrl-C to end Polar Proxy or InetSim. The default internet access will be restored."    
-    echo "Polar Proxy pcaps are saved in ~/PolarProxy/polarproxy.pcap"
-    echo "InetSim logs are saved in /var/log/inetsim/report"
+    echo "Use Ctrl-C to end Polar Proxy or InetSim. The ipforward internet access will be restored."    
+    echo "Polar Proxy pcaps are saved in ~/polarproxy.pcap"
+    echo "InetSim logs are saved in ~/inetsim"
     exit
 fi

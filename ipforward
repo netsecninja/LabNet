@@ -29,7 +29,7 @@ COMMIT
 :INPUT ACCEPT [52:4620]
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [57:4627]
--A FORWARD -d 192.168.56.0/24 -i enp0s8 -j ACCEPT
+-A FORWARD -d 10.0.1.0/24 -i enp0s8 -j ACCEPT
 -A FORWARD -d 192.168.0.0/16 -i enp0s8 -j REJECT --reject-with icmp-port-unreachable
 -A FORWARD -d 172.16.0.0/12 -i enp0s8 -j REJECT --reject-with icmp-port-unreachable
 -A FORWARD -d 10.0.0.0/8 -i enp0s8 -j REJECT --reject-with icmp-port-unreachable
