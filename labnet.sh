@@ -6,7 +6,7 @@
 # LabNet is used to change the network settings for my malware lab
 
 # Check if root
-if [ "$USERNAME" != "root" ]; then
+if [ "$USER" != "root" ]; then
     echo "Must be run as root"
     exit
 fi
