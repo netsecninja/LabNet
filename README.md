@@ -1,6 +1,6 @@
 # LabNet
 
-* LabNet is a collection of scripts and configurations I use to switch networking options in my malware lab.
+LabNet is a collection of scripts and configurations I use to switch networking options in my malware lab.
 * Please see my post on https://netsecninja.github.io/malware-lab for a step-by-step build out of my lab.
 * Follow these installation steps below once you have your Linux gateway VM set up.
 
